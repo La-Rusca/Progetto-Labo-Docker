@@ -12,30 +12,37 @@ CREATE TABLE incidents (
 
 INSERT INTO incidents (title, category, severity, status, description) VALUES
 (
-    'Tentativo di accesso non autorizzato',
-    'Accesso',
-    'Alta',
-    'Aperto',
-    'Rilevati diversi tentativi di accesso non autorizzato.'
+    'Suspicious login attempt',
+    'Unauthorized Access',
+    'High',
+    'Open',
+    'Several unauthorized login attempts were detected.'
 ),
 (
-    'Email di phishing',
+    'Phishing email received',
     'Phishing',
-    'Media',
-    'In analisi',
-    'Un dipendente ha ricevuto una email sospetta contenente un link malevolo.'
+    'Medium',
+    'Open',
+    'A suspicious email containing a potentially malicious link was reported.'
 ),
 (
-    'Malware rilevato',
+    'Malware detected',
     'Malware',
-    'Critica',
-    'Risolto',
-    'Rilevato e rimosso un malware da una workstation aziendale.'
+    'High',
+    'Resolved',
+    'Malware was detected and removed from a workstation.'
 ),
 (
-    'Scansione della rete',
-    'Network',
-    'Bassa',
-    'Chiuso',
-    'Rilevata una scansione delle porte proveniente da un indirizzo esterno.'
+    'Sensitive data exposure',
+    'Data Leak',
+    'High',
+    'Resolved',
+    'Sensitive company information was accidentally exposed.'
+),
+(
+    'Unusual network activity',
+    'Other',
+    'Low',
+    'Open',
+    'Unusual network activity was detected and is being investigated.'
 );
