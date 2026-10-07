@@ -1,0 +1,38 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: app
+    image: cyber-incident-tracker:1.0
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      DB_HOST: db
+      DB_NAME: cybertracker
+      DB_USER: cybertracker
+      DB_PASSWORD: cyberpass
+    depends_on:
+      - db
+    container_name: cybertracker-app
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: db
+    image: cyber-incident-db:1.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: cybertracker
+      MYSQL_USER: cybertracker
+      MYSQL_PASSWORD: cyberpass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    container_name: cybertracker-db
+
+volumes:
+  mysql_data:
