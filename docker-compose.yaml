@@ -15,7 +15,9 @@ services:
       DB_USER: ${MYSQL_USER}
       DB_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
-      - db
+      db:
+        # per vedere se lo stato è healthy
+        condition: service_healthy
     container_name: cybertracker-app
 
   db:
@@ -30,8 +32,16 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    # persistenza per mysql
     volumes:
       - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "cybertracker", "-pcyberpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
     container_name: cybertracker-db
 
 volumes:
