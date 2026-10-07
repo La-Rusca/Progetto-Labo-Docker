@@ -9,3 +9,33 @@ CREATE TABLE incidents (
     description TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO incidents (title, category, severity, status, description) VALUES
+(
+    'Tentativo di accesso non autorizzato',
+    'Accesso',
+    'Alta',
+    'Aperto',
+    'Rilevati diversi tentativi di accesso non autorizzato.'
+),
+(
+    'Email di phishing',
+    'Phishing',
+    'Media',
+    'In analisi',
+    'Un dipendente ha ricevuto una email sospetta contenente un link malevolo.'
+),
+(
+    'Malware rilevato',
+    'Malware',
+    'Critica',
+    'Risolto',
+    'Rilevato e rimosso un malware da una workstation aziendale.'
+),
+(
+    'Scansione della rete',
+    'Network',
+    'Bassa',
+    'Chiuso',
+    'Rilevata una scansione delle porte proveniente da un indirizzo esterno.'
+);
